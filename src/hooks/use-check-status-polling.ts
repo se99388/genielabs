@@ -12,11 +12,9 @@ const useCheckStatusPolling = (
     let timeoutId: NodeJS.Timeout;
 
     const checkStatusFn = async (creationMap: CreationMap) => {
-      console.log("creationMap-inside", creationMap, creationMap);
-
       if (isCompleted(creationMap)) {
         onAllCreationsCompleted({ ...creationMap });
-        console.log("All creations completed", creationMap);
+
         return;
       }
 
