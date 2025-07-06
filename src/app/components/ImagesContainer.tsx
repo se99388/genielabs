@@ -12,16 +12,19 @@ const ImagesContainer = ({ creationMap }: Props) => {
   if (!completed) return;
 
   return (
-    <div className="mt-8 flex gap-4 justify-center items-center relative h-[300px]">
-      {Object.values(creationMap).map((c, index) => (
+    <div className="mt-8 flex gap-4 justify-center items-center relative min-h-[500px] shadow-md rounded-lg">
+      {Object.values(creationMap).map((c) => (
         <Image
           width={300}
           height={200}
-          key={index}
+          key={c.result_image_url}
           src={c.result_image_url}
-          alt={`Generated ${index}`}
-          className="max-w-xs max-h-52 rounded-lg shadow-md absolute"
-          style={{ zIndex: c.artifact_type === "character" ? 1 : 0 }}
+          alt={`Generated ${c.result_image_url}`}
+          className="rounded-lg"
+          style={{
+            zIndex: c.artifact_type === "character" ? 1 : 0,
+            position: c.artifact_type === "character" ? "absolute" : "initial",
+          }}
         />
       ))}
     </div>
